@@ -5,46 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IDEAS | OXT</title>
     <style>
-    body {
-        background-color: #000000;
-        color: #00ff41;
-        font-family: 'Courier New', Courier, monospace;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        cursor: pointer;
-    }
+        body {
+            background-color: #000000;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            cursor: pointer;
+            /* Prevents blue highlight on mobile taps */
+            -webkit-tap-highlight-color: transparent; 
+        }
 
-    #terminal {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        justify-content: flex-start; 
-    }
+        #terminal {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: flex-start; 
+        }
 
-    #content {
-        white-space: pre-wrap;
-        text-align: left; 
-        /* INCREASE THIS NUMBER if it still cuts off (e.g., 120s or 180s) */
-        animation: scroll-up 120s linear infinite; 
-        padding: 80px;
-        font-size: 1.3rem;
-        line-height: 1.8;
-        max-width: 850px; 
-    }
+        #content {
+            white-space: pre-wrap;
+            text-align: left; 
+            /* 360s (6 minutes) matches the length of this specific text */
+            animation: scroll-up 360s linear infinite; 
+            padding: 50px;
+            font-size: 1.25rem;
+            line-height: 1.9;
+            max-width: 900px; 
+            text-shadow: 0 0 2px #00ff41;
+        }
 
-    #content.paused {
-        animation-play-state: paused;
-        color: #ffffff;
-    }
+        #content.paused {
+            animation-play-state: paused;
+            color: #ffffff;
+            text-shadow: 0 0 10px #00ff41;
+        }
 
-    @keyframes scroll-up {
-        /* Starts below the screen */
-        0% { transform: translateY(100vh); }
-        /* Ends when the bottom of the content has fully cleared the top */
-        100% { transform: translateY(-100%); }
-    }
-</style>
+        @keyframes scroll-up {
+            0% { transform: translateY(95vh); }
+            100% { transform: translateY(-100%); }
+        }
+    </style>
 </head>
 <body>
 
@@ -52,7 +54,6 @@
     <div id="content">
 IDEAS / free to use (no attribution needed)
 _x Tre 
-
 
 - EVERYONE WANTS TO BE COOL
 
@@ -70,13 +71,11 @@ _x Tre
 
 - YOU HAVE PERMISSION TO LAUGH AT THIS
 
-- You go to Drake for X. You go to XYZ for Y. You go to OXT for transcendence. 
+- You go to Drake for X. You go to XYZ for Y. You go to OXT for ______. 
 
 - Creation is a compulsion.
 
 - The artist is a company. The artist is a machine. The artist is a universe. 
-
-- “The world is lame” —— the underlying message that will attract younger audiences and consumers. But it resonates across generations
 
 - MATCH ENERGY
 
@@ -512,7 +511,7 @@ _x Tre
 
 - OXT IS A SYNTHESIS
 
-- You’ve been holding a bill of goods ❌❎￼👀 SEE YOURSELF
+- You’ve been holding a bill of goods ❌❎👀 SEE YOURSELF
 
 - The point of life is to live.
 
@@ -558,19 +557,6 @@ _x Tre
 
 - Wave the white flag. ❤️ 
 
-
-￼
-ATE THAT SHIT UP Y’ALL 👏🏽👏🏽👏🏽👏🏽👏🏽👏🏽👏🏽👏🏽
-
-
-
-
-
-
-
-
-
-
     </div>
 </div>
 
@@ -579,12 +565,9 @@ ATE THAT SHIT UP Y’ALL 👏🏽👏🏽👏🏽👏🏽👏🏽👏🏽👏�
     const pause = () => content.classList.add('paused');
     const resume = () => content.classList.remove('paused');
 
-    // Freeze when pressing down
     window.addEventListener('mousedown', pause);
-    window.addEventListener('touchstart', pause);
-
-    // Resume when letting go
     window.addEventListener('mouseup', resume);
+    window.addEventListener('touchstart', pause);
     window.addEventListener('touchend', resume);
 </script>
 
